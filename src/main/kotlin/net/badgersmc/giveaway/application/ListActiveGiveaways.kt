@@ -19,6 +19,7 @@ class ListActiveGiveaways(
             GiveawaySummary(
                 id = g.id,
                 title = g.title,
+                description = g.description,
                 secondsRemaining = secondsRemaining,
                 entryCount = entries.playerUuidsFor(g.id).size,
                 alreadyEntered = entries.hasEntered(g.id, viewerUuid),

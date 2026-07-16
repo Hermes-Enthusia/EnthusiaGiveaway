@@ -48,15 +48,17 @@ class PlayerGiveawayMenu(
         val item = ItemStack(material)
         item.editMeta { meta ->
             meta.displayName(Styled.giveawayTitle(s.title))
-            meta.lore(listOf(
-                Styled.timeLeft(s.secondsRemaining),
-                Styled.body("Entries: ${s.entryCount}"),
-                Component.empty(),
-                if (s.alreadyEntered)
-                    Styled.success("✓ Entered")
-                else
-                    Styled.accent("Click to enter"),
-            ))
+            val lore = mutableListOf<Component>()
+            if (s.description.isNotBlank()) {
+                lore.add(Component.text(s.description, NamedTextColor.WHITE)
+                    .decoration(TextDecoration.ITALIC, false))
+                lore.add(Component.empty())
+            }
+            lore.add(Styled.timeLeft(s.secondsRemaining))
+            lore.add(Styled.body("Entries: ${s.entryCount}"))
+            lore.add(Component.empty())
+            lore.add(if (s.alreadyEntered) Styled.success("✓ Entered") else Styled.accent("Click to enter"))
+            meta.lore(lore)
         }
 
         return GuiItem(item) { event ->
