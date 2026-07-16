@@ -23,7 +23,11 @@ celebration:
 
   pixel-art:
     enabled: true
-    api-url: "https://starlightskins.lunareclipse.studio/render/default/<uuid>/face"
+    # Replace this with any player-head render API. Fallback options:
+    #   https://api.mcheads.org/head/<uuid>/8
+    #   https://visage.surgeplay.com/face/8/<uuid>
+    #   https://mc-heads.net/head/<uuid>/8
+    api-url: "https://api.mcheads.org/head/<uuid>/8"
     size: 8
     character: "⬛"
 
