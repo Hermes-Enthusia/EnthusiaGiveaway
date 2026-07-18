@@ -26,7 +26,7 @@ class PlayerGiveawayMenu(
     private fun render(player: Player) {
         val summaries = listActive.invoke(player.uniqueId)
         val gui = ChestGui(6, "Active Giveaways")
-        gui.setOnTopClick { it.isCancelled = true }
+        gui.blockItemTheft()
 
         val pane = StaticPane(0, 0, 9, 6)
 
